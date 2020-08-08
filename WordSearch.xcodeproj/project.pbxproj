@@ -13,6 +13,7 @@
 		50F21B3624DF0DF70054E52B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F21B3524DF0DF70054E52B /* Assets.xcassets */; };
 		50F21B3924DF0DF70054E52B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F21B3724DF0DF70054E52B /* LaunchScreen.storyboard */; };
 		50F21B4424DF0DF70054E52B /* WordSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F21B4324DF0DF70054E52B /* WordSearchTests.swift */; };
+		50F21B5124DF12360054E52B /* WordSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F21B5024DF12360054E52B /* WordSearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		50F21B3F24DF0DF70054E52B /* WordSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F21B4324DF0DF70054E52B /* WordSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchTests.swift; sourceTree = "<group>"; };
 		50F21B4524DF0DF70054E52B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50F21B5024DF12360054E52B /* WordSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				50F21B4F24DF11240054E52B /* Controllers */,
+				50F21B5224DF123A0054E52B /* ViewModels */,
 				50F21B4E24DF10EB0054E52B /* Support */,
 			);
 			path = WordSearch;
@@ -110,6 +113,14 @@
 				50F21B3024DF0DF60054E52B /* SearchViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		50F21B5224DF123A0054E52B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				50F21B5024DF12360054E52B /* WordSearchViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +225,7 @@
 			files = (
 				50F21B3124DF0DF60054E52B /* SearchViewController.swift in Sources */,
 				50F21B2D24DF0DF60054E52B /* AppDelegate.swift in Sources */,
+				50F21B5124DF12360054E52B /* WordSearchViewModel.swift in Sources */,
 				50F21B2F24DF0DF60054E52B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
