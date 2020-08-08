@@ -8,6 +8,13 @@
 
 import Foundation
 
+enum SearchState: String {
+    case showingResults
+    case searching = "Validating word..."
+    case noResult = "No results found."
+    case empty = ""
+}
+
 class WordSearchViewModel {
     
     private let baseStringedURL = "https://dictionary.skyeng.ru/api/public/v1"
