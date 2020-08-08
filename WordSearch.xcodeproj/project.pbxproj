@@ -77,12 +77,8 @@
 		50F21B2B24DF0DF60054E52B /* WordSearch */ = {
 			isa = PBXGroup;
 			children = (
-				50F21B2C24DF0DF60054E52B /* AppDelegate.swift */,
-				50F21B2E24DF0DF60054E52B /* SceneDelegate.swift */,
-				50F21B3024DF0DF60054E52B /* ViewController.swift */,
-				50F21B3524DF0DF70054E52B /* Assets.xcassets */,
-				50F21B3724DF0DF70054E52B /* LaunchScreen.storyboard */,
-				50F21B3A24DF0DF70054E52B /* Info.plist */,
+				50F21B4F24DF11240054E52B /* Controllers */,
+				50F21B4E24DF10EB0054E52B /* Support */,
 			);
 			path = WordSearch;
 			sourceTree = "<group>";
@@ -94,6 +90,26 @@
 				50F21B4524DF0DF70054E52B /* Info.plist */,
 			);
 			path = WordSearchTests;
+			sourceTree = "<group>";
+		};
+		50F21B4E24DF10EB0054E52B /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				50F21B2C24DF0DF60054E52B /* AppDelegate.swift */,
+				50F21B2E24DF0DF60054E52B /* SceneDelegate.swift */,
+				50F21B3524DF0DF70054E52B /* Assets.xcassets */,
+				50F21B3724DF0DF70054E52B /* LaunchScreen.storyboard */,
+				50F21B3A24DF0DF70054E52B /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		50F21B4F24DF11240054E52B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50F21B3024DF0DF60054E52B /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,7 +368,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M5GNN3BNG3;
-				INFOPLIST_FILE = WordSearch/Info.plist;
+				INFOPLIST_FILE = WordSearch/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,7 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M5GNN3BNG3;
-				INFOPLIST_FILE = WordSearch/Info.plist;
+				INFOPLIST_FILE = WordSearch/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
