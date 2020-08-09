@@ -28,8 +28,14 @@ class SearchViewController: UIViewController {
     }()
     
     //MARK: - Constraints
-    var filteredWords: [String] = []
+    let viewModel = WordSearchViewModel()
     var timer = Timer()
+    
+    var foundMeanings: [Meaning] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     var searchState: SearchState = .empty {
         didSet {
@@ -88,6 +94,9 @@ class SearchViewController: UIViewController {
         ]
         
         NSLayoutConstraint.activate(mainConstraints)
+        
+        let footerView = UIView()
+        tableView.tableFooterView = footerView
     }
     
     private func handleSearchStateChange() {
@@ -111,15 +120,14 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate, UI
             timer.invalidate()
             
             if searchText.count > 1 {
-                if filteredWords.isEmpty {
+                if foundMeanings.isEmpty {
                     searchState = .searching
                 }
                 
-                timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(searchForWords(sender:)), userInfo: searchText, repeats: false)
-            } else {
-                filteredWords.removeAll()
+                timer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(searchForWords(sender:)), userInfo: searchText, repeats: false)
+            }  else {
+                foundMeanings.removeAll()
                 searchState = .empty
-                tableView.reloadData()
             }
         }
     }
@@ -131,7 +139,19 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate, UI
     @objc func searchForWords(sender: Timer) {
         guard let searchText = sender.userInfo as? String else { return }
 
-        //FIXME: - add search
+        viewModel.searchWord(searchText) { (searchResult, error) in
+            DispatchQueue.main.async {
+                if let nonEmpyError = error {
+                    self.searchState = .noResult
+                    print(nonEmpyError.localizedDescription)
+                } else if let nonEmptyMeaningns = searchResult?.meanings {
+                    self.searchState = .showingResults
+                    self.foundMeanings = nonEmptyMeaningns
+                } else {
+                    self.searchState = .noResult
+                }
+            }
+        }
     }
 }
 
@@ -141,20 +161,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if showPlaceholderText {
             return 1
         } else {
-            //FIXME: - add words handling
-            return 50
+            return foundMeanings.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.backgroundColor = .clear
         
         if showPlaceholderText {
             cell.textLabel?.text = searchState.rawValue
-        } else {
-            //FIXME: - add word content handling
-            cell.textLabel?.text = "Testing"
+        } else if let meaningForIndex = foundMeanings[safe: indexPath.row] {
+            cell.textLabel?.text = meaningForIndex.translation?.text
         }
         
         return cell
