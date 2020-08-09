@@ -24,7 +24,6 @@ enum CustomReturnEror: Error {
 class WordSearchViewModel {
     
     private let baseStringedURL = "https://dictionary.skyeng.ru/api/public/v1"
-    private let imageStringedURLPrefix = "https:"
     private let networkQueue = DispatchQueue(label: "Word Search", qos: DispatchQoS.background)
     
     //MARK: - Network
@@ -38,7 +37,7 @@ class WordSearchViewModel {
             }
 
             let urlRequest = URLRequest(url: url)
-        
+            
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 guard let data = data else {
                     completion(nil, CustomReturnEror.noDataInResponse)
@@ -49,6 +48,8 @@ class WordSearchViewModel {
                     let searchResult = try JSONDecoder().decode(Array<SearchResult>.self, from: data)
                     if let firstResult = searchResult.first {
                         completion(firstResult, nil)
+                    } else {
+                        completion(nil, CustomReturnEror.noDataInResponse)
                     }
                 } catch {
                     completion(nil, CustomReturnEror.cantDecodeResponse)

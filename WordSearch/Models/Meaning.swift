@@ -12,8 +12,37 @@ struct Meaning: Decodable {
     let id: Int?
     let difficultyLevel: Int?
     let translation: Translation?
-    let previewUrl: String?
-    let imageUrl: String?
+    
+    private let previewUrl: String?
+    private let imageUrl: String?
+    
+    var fixedPreviewURL: String? {
+        get {
+            if let nonEmptyPreviewURL = previewUrl {
+                var finalPreviewURL = nonEmptyPreviewURL
+                if finalPreviewURL.prefix(5) != "https" {
+                    finalPreviewURL = "https:" + finalPreviewURL
+                }
+                return finalPreviewURL
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    var fixedImageURL: String? {
+        get {
+            if let nonEmptyImageURL = imageUrl {
+                var finalImageURL = nonEmptyImageURL
+                if nonEmptyImageURL.prefix(5) != "https" {
+                    finalImageURL = "https:" + finalImageURL
+                }
+                return finalImageURL
+            } else {
+                return nil
+            }
+        }
+    }
     
     enum CodingKeys: String, CodingKey {
         case id, difficultyLevel, translation, previewUrl, imageUrl
